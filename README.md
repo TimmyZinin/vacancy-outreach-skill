@@ -6,15 +6,13 @@ The repository contains a skill specification and design documents. It does not 
 
 ## Use and limits
 
-Before using any integration, check the site's current terms and obtain any required permission. Review each application before submission, use the service only for its intended purpose, and stop if access controls or rate limits block the workflow. The historical design notes below describe automation and are not a statement that it is currently authorized or active.
+Before using any integration, check the site's current terms and obtain any required permission. Review each application before submission, use the service only for its intended purpose, and stop if access controls or rate limits block the workflow. The workflow specification describes automation and is not a statement that it is currently authorized or active.
 
 ## Documentation
 
 - [Skill specification](SKILL.md)
 - [Detailed specification](SPEC.md)
 - [Architecture](Architecture.md)
-- [Development backlog](BACKLOG.md)
-- [Historical CRM integration plan](TWENTY_CRM_INTEGRATION_PLAN.md)
 
 ## Author
 

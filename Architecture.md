@@ -6,7 +6,7 @@
 graph TD
     A[Пользователь: /vacancy-outreach 20] --> B[Claude Code Skill]
     B --> C[Chrome CDP]
-    C --> D[HH.ru в Chrome]
+    C --> D[Сайт вакансий в Chrome]
     B --> E[sent.json]
     B --> F[Дневной лог]
     D --> G[Поиск вакансий]
@@ -30,7 +30,7 @@ graph TD
 - Требует: Chrome с включённым remote debugging
 
 ### 3. Хранилище данных
-- Расположение: `~/hh-outreach-data/`
+- Расположение: каталог данных указан в `SKILL.md`
 - `sent.json` - история всех откликов (source of truth)
 - `log-YYYY-MM-DD.md` - дневные логи (человекочитаемые)
 
@@ -39,44 +39,44 @@ graph TD
 - Шаблон в SPEC.md: модульная структура (opening + reaction + offer + what_i_do + slots + cta)
 - Без внешних LLM вызовов
 
-## Взаимодействие с HH.ru
+## Взаимодействие с сайтом вакансий
 
 ```mermaid
 sequenceDiagram
     participant C as Claude Code
     participant CDP as Chrome CDP
-    participant HH as HH.ru (Chrome)
+    participant SITE as Сайт вакансий (Chrome)
     
-    C->>CDP: list (найти HH таб)
-    CDP->>HH: WebSocket
+    C->>CDP: list (найти вкладку сайта)
+    CDP->>SITE: WebSocket
     CDP-->>C: tab ID
     
     C->>CDP: nav(tab, search_url)
-    CDP->>HH: navigate
-    HH-->>CDP: page loaded
+    CDP->>SITE: navigate
+    SITE-->>CDP: page loaded
     
     C->>CDP: eval(tab, extract_vacancies_js)
-    CDP->>HH: execute JS
-    HH-->>CDP: vacancy list
+    CDP->>SITE: execute JS
+    SITE-->>CDP: vacancy list
     CDP-->>C: [{id, title, company}]
     
     loop Для каждой вакансии
         C->>CDP: nav(tab, vacancy_url)
-        CDP->>HH: navigate
+        CDP->>SITE: navigate
         C->>CDP: eval(tab, extract_description_js)
-        HH-->>CDP: description text
+        SITE-->>CDP: description text
         CDP-->>C: description
         
         Note over C: Claude генерит кастомный текст
         
         C->>CDP: eval(tab, click_respond_js)
-        CDP->>HH: click Откликнуться
+        CDP->>SITE: click Откликнуться
         C->>CDP: eval(tab, click_add_cover_js)
-        CDP->>HH: click Добавить сопроводительное
+        CDP->>SITE: click Добавить сопроводительное
         C->>CDP: type(tab, cover_letter)
-        CDP->>HH: input text
+        CDP->>SITE: input text
         C->>CDP: eval(tab, click_send_js)
-        CDP->>HH: click Откликнуться (в модалке)
+        CDP->>SITE: click Откликнуться (в модалке)
         
         C->>C: log to sent.json
         C->>C: throttle 5-10 sec
