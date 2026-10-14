@@ -1,16 +1,18 @@
 ---
-name: hh-outreach
-description: "Массовая рассылка откликов на HH вакансии для лидгена. Триггеры: /hh-outreach, 'отклики hh', 'рассылка hh', 'откликнись на вакансии'"
+name: vacancy-outreach
+description: "Независимый скилл для поиска вакансий, подготовки сообщений и откликов через сторонний сайт. Триггер: /vacancy-outreach"
 ---
 
-# /hh-outreach - Автоматические отклики на HH.ru
+# /vacancy-outreach — подготовка и отправка откликов
 
-Полная спецификация: https://github.com/TimmyZinin/hh-outreach/blob/main/SPEC.md
+Независимый проект; не связан с операторами сайтов вакансий. Перед использованием проверьте правила площадки и разрешения.
+
+Полная спецификация: https://github.com/TimmyZinin/vacancy-outreach-skill/blob/main/SPEC.md
 
 ## Вызов
 
 ```
-/hh-outreach <количество> [запрос] [--флаги]
+/vacancy-outreach <количество> [запрос] [--флаги]
 ```
 
 ## Аргументы
@@ -264,7 +266,7 @@ Reason codes: SENT, SKIP_NO_TEXTAREA, SKIP_ALREADY_APPLIED, SKIP_DRY_RUN, SKIP_U
 
 ### Шаг 7: REPORT
 ```
-HH Outreach: завершено
+Vacancy Outreach: завершено
 Отправлено: X
 Пропущено: Y (Nx SKIP_NO_TEXTAREA, Nx SKIP_ALREADY_APPLIED, ...)
 Ошибок: Z (Nx FAILED_NO_CONFIRMATION, ...)

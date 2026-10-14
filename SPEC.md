@@ -1,22 +1,22 @@
-# HH Outreach - Спецификация (SDD)
+# Vacancy Outreach - Спецификация (SDD)
 
 ## 1. Назначение
 
-Скилл `/hh-outreach` для Claude Code. Автоматизирует отправку откликов на вакансии HH.ru с персонализированными сопроводительными письмами. Цель - лидогенерация: предлагать подряд на ИП вместо найма в штат.
+Скилл `/vacancy-outreach` для Claude Code. Автоматизирует отправку откликов на вакансии HH.ru с персонализированными сопроводительными письмами. Цель - лидогенерация: предлагать подряд на ИП вместо найма в штат.
 
 ## 2. Вызов
 
 ```
-/hh-outreach <количество> [запрос] [--флаги]
+/vacancy-outreach <количество> [запрос] [--флаги]
 ```
 
 Примеры:
 ```
-/hh-outreach 20
-/hh-outreach 20 "SMM маркетолог контент"
-/hh-outreach 20 --query "контент-стратег" --min-salary 80000
-/hh-outreach 20 --dry-run
-/hh-outreach 20 --preview
+/vacancy-outreach 20
+/vacancy-outreach 20 "SMM маркетолог контент"
+/vacancy-outreach 20 --query "контент-стратег" --min-salary 80000
+/vacancy-outreach 20 --dry-run
+/vacancy-outreach 20 --preview
 ```
 
 ## 3. Режимы
@@ -41,7 +41,7 @@
 
 ```mermaid
 flowchart TD
-    A[/hh-outreach N/] --> A1{sent.json valid?}
+    A[/vacancy-outreach N/] --> A1{sent.json valid?}
     A1 -->|Нет| A2[Restore from .bak or create empty]
     A1 -->|Да| A3{>180 откликов?}
     A2 --> A3
@@ -280,7 +280,7 @@ mv sent.json.tmp sent.json
 ### Дневной лог (log-YYYY-MM-DD.md)
 
 ```markdown
-# HH Outreach Log - 2026-04-03
+# Vacancy Outreach Log - 2026-04-03
 
 | # | ID | Компания | Вакансия | ЗП | Статус | Reason |
 |---|-----|----------|----------|-----|--------|--------|
@@ -298,7 +298,7 @@ mv sent.json.tmp sent.json
 ## 10. Отчёт (Шаг 7)
 
 ```
-HH Outreach: завершено
+Vacancy Outreach: завершено
 
 Отправлено: 18/20
 Пропущено: 2 (1x SKIP_NO_TEXTAREA, 1x SKIP_ALREADY_APPLIED)

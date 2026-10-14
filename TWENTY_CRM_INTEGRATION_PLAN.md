@@ -1,4 +1,4 @@
-# Twenty CRM → HH Outreach — План интеграции
+# Twenty CRM → Vacancy Outreach — План интеграции
 
 **Version:** 6.0 (v5.4 + Sprint Protocol раздел с Codex gate в каждом спринте)
 **Date:** 2026-04-11
@@ -1095,7 +1095,7 @@ launchd agent `com.timzinin.twenty-key-check`, StartCalendarInterval daily 09:00
 | `PG_DATABASE_PASSWORD` | `/opt/twenty/.env` (600) + KeePassXC | Yearly | — |
 | Backup archive access | SSH key `root@contabo` + local `/opt/backups/` 700 | SSH key yearly | — |
 | WAL retention (Codex R7) | Daily cleanup (Sprint 6.5): `.sent` older 14d, `.sent.manual` older 30d, `.failed.permanent` older 60d (after reconciliation check). Sprint 8.5 cron alerts on any `.failed.*` > 0. `twenty-wal/` chmod 700 | — | Monthly audit of permissions |
-| Integrity tamper recovery (Codex R5) | Runbook `docs/integrity-recovery.md`: (1) compare `~/.secrets/twenty-integrity.json` sha256 vs KeePass backup → mismatch = tamper. (2) Restore integrity.json from KeePass. (3) Recompute all file hashes, verify against git-committed `scripts/*.mjs` in `TimmyZinin/hh-outreach` via `git hash-object` + git show against last known good commit. (4) If wrapper files changed — re-clone from git + re-lock. (5) Attestation must pass before resuming. | On any integrity mismatch | — |
+| Integrity tamper recovery (Codex R5) | Runbook `docs/integrity-recovery.md`: (1) compare `~/.secrets/twenty-integrity.json` sha256 vs KeePass backup → mismatch = tamper. (2) Restore integrity.json from KeePass. (3) Recompute all file hashes, verify against git-committed `scripts/*.mjs` in `TimmyZinin/vacancy-outreach-skill` via `git hash-object` + git show against last known good commit. (4) If wrapper files changed — re-clone from git + re-lock. (5) Attestation must pass before resuming. | On any integrity mismatch | — |
 | Let's Encrypt certs | `/etc/letsencrypt/` — auto-renew via `certbot.timer` + `--deploy-hook` reload | Every 60 days automatic | TG if `certbot renew --dry-run` fails |
 
 **Compromise runbook for API key:**

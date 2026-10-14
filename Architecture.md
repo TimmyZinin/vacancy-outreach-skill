@@ -1,10 +1,10 @@
-# HH Outreach - Архитектура
+# Vacancy Outreach - Архитектура
 
 ## Обзор
 
 ```mermaid
 graph TD
-    A[Пользователь: /hh-outreach 20] --> B[Claude Code Skill]
+    A[Пользователь: /vacancy-outreach 20] --> B[Claude Code Skill]
     B --> C[Chrome CDP]
     C --> D[HH.ru в Chrome]
     B --> E[sent.json]
@@ -18,7 +18,7 @@ graph TD
 ## Компоненты
 
 ### 1. Скилл (SKILL.md)
-- Расположение: `~/.claude/skills/hh-outreach/SKILL.md`
+- Расположение: `~/.claude/skills/vacancy-outreach/SKILL.md`
 - Тип: Claude Code skill (markdown-спецификация)
 - Claude читает SKILL.md и выполняет инструкции
 - Нет исполняемого кода - только спецификация поведения
@@ -89,7 +89,7 @@ sequenceDiagram
 
 ```mermaid
 stateDiagram-v2
-    [*] --> INIT: /hh-outreach N
+    [*] --> INIT: /vacancy-outreach N
     INIT --> SEARCH: CDP доступен
     INIT --> ERROR: CDP недоступен
     SEARCH --> READ: вакансии найдены
